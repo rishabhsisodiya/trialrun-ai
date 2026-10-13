@@ -1,0 +1,17 @@
+{
+  "id": "retrieval-eval",
+  "title": "Fix a retrieval pipeline and its evaluation",
+  "language": "python",
+  "roles": ["AI engineer", "ML engineer", "backend engineer"],
+  "rubric": [
+    "Fixed the metrics before touching the ranker, recognising that a broken eval makes every other change unmeasurable",
+    "recall_at_k divides by the number of relevant documents, not by k, and handles a query with no relevant documents without dividing by zero",
+    "reciprocal_rank uses a one-based rank and returns 0 when nothing relevant is retrieved",
+    "Tokenisation lowercases and strips punctuation, so 'Refund?' matches 'refund'",
+    "BM25 follows the formula in the brief, including document-length normalisation, and ties break deterministically by document id",
+    "Checked the agent's BM25 against a small case worked by hand instead of trusting that it looks right",
+    "Added tests for the cases the brief names but the provided tests do not cover: empty query, query with no relevant documents, k larger than the corpus",
+    "Can explain what each metric means and why the old numbers were misleading"
+  ],
+  "test": { "command": "python3", "args": ["-m", "unittest", "discover", "-s", "tests"] }
+}

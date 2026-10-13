@@ -1,0 +1,17 @@
+{
+  "id": "activity-feed",
+  "title": "Paginate the activity feed",
+  "language": "javascript",
+  "roles": ["full-stack engineer", "backend engineer"],
+  "rubric": [
+    "Read the existing code and tests before prompting, and noticed that listEvents sorts the store's own array in place",
+    "Cursor is opaque and encodes both createdAt and id, so events that share a timestamp are neither repeated nor skipped",
+    "Ordering has a deterministic tie-break on id",
+    "Listing no longer mutates the store",
+    "limit is validated (default 20, maximum 100, rejects zero, negatives and non-numbers) and a malformed cursor raises InvalidQueryError, which the server turns into a 400",
+    "Added tests for the cases the brief names but the provided tests do not cover: invalid limit, malformed cursor, the 400 response",
+    "Ran the tests and reviewed the agent's diff instead of accepting it unread; can explain how the cursor works when asked",
+    "Kept the change small: no new dependencies, no rewrite of unrelated code"
+  ],
+  "test": { "command": "node", "args": ["--test"] }
+}

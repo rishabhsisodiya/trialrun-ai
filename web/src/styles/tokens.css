@@ -1,0 +1,57 @@
+/* Design tokens. Components use these names only, never raw colours. */
+:root {
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+
+  --duration-fast: 150ms;
+  --content-width: 1240px;
+
+  /* Dark is the default: this sits beside a code editor. */
+  --color-bg: #0f172a;
+  --color-surface: #1b2336;
+  --color-surface-raised: #232c42;
+  --color-border: #334155;
+  --color-text: #f8fafc;
+  --color-text-muted: #a3b1c6;
+  --color-accent: #22c55e;
+  --color-on-accent: #0f172a;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-focus: #f8fafc;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-raised: #f1f5f9;
+    --color-border: #cbd5e1;
+    --color-text: #0f172a;
+    --color-text-muted: #475569;
+    --color-accent: #15803d;
+    --color-on-accent: #ffffff;
+    --color-success: #15803d;
+    --color-warning: #92400e;
+    --color-danger: #b91c1c;
+    --color-focus: #0f172a;
+  }
+}

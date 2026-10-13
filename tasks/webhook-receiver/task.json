@@ -1,0 +1,17 @@
+{
+  "id": "webhook-receiver",
+  "title": "Harden a customer webhook integration",
+  "language": "javascript",
+  "roles": ["forward deployed engineer", "backend engineer"],
+  "rubric": [
+    "Verifies the HMAC over the raw request body, not over re-serialised JSON",
+    "Compares signatures in constant time (crypto.timingSafeEqual) and handles a signature of the wrong length or format without throwing",
+    "Rejects requests whose timestamp is missing, malformed or outside the five-minute window, and includes the timestamp in what is signed as the brief specifies",
+    "Duplicate deliveries of the same eventId are applied once and still answered 200, so the customer's retries stop",
+    "An older version never overwrites a newer one; the candidate decided and can justify what status an out-of-order event gets",
+    "Noticed that malformed JSON currently crashes the handler and that the secret must not be logged",
+    "Added tests for the cases the brief names but the provided tests do not cover: stale timestamp, out-of-order version, malformed signature",
+    "Scoped the work like an integration engineer: asked what the customer needs first, verified the agent's crypto code rather than trusting it, and can explain each check"
+  ],
+  "test": { "command": "node", "args": ["--test"] }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ledger-import",
+  "title": "Make a customer's transaction import safe to run",
+  "language": "python",
+  "roles": ["backend engineer", "forward deployed engineer", "full-stack engineer"],
+  "rubric": [
+    "Stopped using float for money: amounts are parsed with Decimal or integer arithmetic into whole cents, and the candidate can say why float is wrong here",
+    "Rejects an amount with more than two decimal places instead of silently rounding it",
+    "Re-importing a file skips rows whose id is already in the ledger, and a duplicate id inside one file is also applied once",
+    "A bad row is reported with its line number in the file and a reason, and never stops the rows after it from importing",
+    "Handles the real-file details the brief names but the provided tests do not cover: a byte-order mark, blank lines, a malformed date",
+    "Added tests for those cases, and checked the line numbers by hand rather than trusting the agent's arithmetic",
+    "Read the ledger and the existing tests before prompting, and kept the ledger's public methods working",
+    "Reviewed the agent's parsing code for inputs it would accept wrongly (for example '1,2,3.4' or an empty amount) and can explain what happens to each"
+  ],
+  "test": { "command": "python3", "args": ["-m", "unittest", "discover", "-s", "tests"] }
+}
